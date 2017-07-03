@@ -77,7 +77,7 @@ fsid: "{{ cluster_uuid.stdout }}"
 #  - /dev/sdd
 #  - /dev/sde
 
-devices: /dev/sdc
+devices: [ "/dev/sdc" ]
 
 
 #'osd_auto_discovery'  mode prevents you from filling out the 'devices' variable above.
