@@ -11,6 +11,7 @@
       public_network: "192.168.128.0/17"
       generate_fsid: true
       journal_collocation: true
+      monitor_interface: eth0
       monitor_address_block: "192.168.128.0/17"
       keys: [{"mon_cap": "mon 'allow r'", "osd_cap": "osd 'allow class-read object_prefix rbd_children, allow rwx pool=volumes, allow rwx pool=backups, allow rwx pool=vms, allow rwx pool=images, allow rwx pool=metrics'", "name": "client.openstack", "key": "AQDDn2dZAAAAABAAIlLJpMcVWCYsbiLgVEXxPw=="}, {"mon_cap": "mon 'allow r, allow command \"auth del\", allow command \"auth caps\", allow command \"auth get\", allow command \"auth get-or-create\"'", "osd_cap": "osd 'allow rw'", "mds_cap": "mds 'allow *'", "name": "client.manila", "key": "AQDDn2dZAAAAABAA6/goYtbJERWANJjTPSFswg=="}]
       openstack_keys: [{"mon_cap": "mon 'allow r'", "osd_cap": "osd 'allow class-read object_prefix rbd_children, allow rwx pool=volumes, allow rwx pool=backups, allow rwx pool=vms, allow rwx pool=images, allow rwx pool=metrics'", "name": "client.openstack", "key": "AQDDn2dZAAAAABAAIlLJpMcVWCYsbiLgVEXxPw=="}, {"mon_cap": "mon 'allow r, allow command \"auth del\", allow command \"auth caps\", allow command \"auth get\", allow command \"auth get-or-create\"'", "osd_cap": "osd 'allow rw'", "mds_cap": "mds 'allow *'", "name": "client.manila", "key": "AQDDn2dZAAAAABAA6/goYtbJERWANJjTPSFswg=="}]
@@ -21,7 +22,7 @@
       journal_size: 256
       cephfs_metadata: "manila_metadata"
       ceph_mon_docker_interface: "eth0"
-      openstack_config: true
+      openstack_config: false
       ceph_docker_registry: "docker.io"
       cephfs_data: "manila_data"
       ceph_stable: true
@@ -37,3 +38,8 @@
       raw_multi_journal: true
       mds_allow_multimds: true
       mds_max_mds: 3
+      ceph_stable_release: kraken
+      ceph_release_num:
+       ceph_stable_release: kraken
+       jewel: 10
+       kraken: 11
