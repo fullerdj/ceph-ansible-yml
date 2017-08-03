@@ -1,0 +1,5 @@
+- hosts: mons, osds, mgrs, clients, mdss
+  tasks:
+  - hostname:
+      name: "{{ ansible_default_ipv4.address }}"
+    when: ansible_hostname == "localhost"
