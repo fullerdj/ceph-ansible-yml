@@ -7,52 +7,7 @@
 # file as a good configuration file when no variable in it.
 dummy:
 
-# You can override default vars defined in defaults/main.yml here,
-# but I would advice to use host or group vars instead
-
-
-###########
-# GENERAL #
-###########
-
 fetch_directory: ~/ceph-ansible-keys
-
-# Even though OSD nodes should not have the admin key
-# at their disposal, some people might want to have it
-# distributed on OSD nodes. Setting 'copy_admin_key' to 'true'
-# will copy the admin key to the /etc/ceph/ directory
-#copy_admin_key: false
-
-
-####################
-# OSD CRUSH LOCATION
-####################
-
-# /!\
-#
-# BE EXTREMELY CAREFUL WITH THIS OPTION
-# DO NOT USE IT UNLESS YOU KNOW WHAT YOU ARE DOING
-#
-# /!\
-#
-# It is probably best to keep this option to 'false' as the default
-# suggests it. This option should only be used while doing some complex
-# CRUSH map. It allows you to force a specific location for a set of OSDs.
-#
-# The following options will build a ceph.conf with OSD sections
-# Example:
-# [osd.X]
-# osd crush location = "root=location"
-#
-# This works with your inventory file
-# To match the following 'osd_crush_location' option the inventory must look like:
-#
-# [osds]
-# osd0 ceph_crush_root=foo ceph_crush_rack=bar
-
-#crush_location: false
-#osd_crush_location: "\"root={{ ceph_crush_root }} rack={{ ceph_crush_rack }} host={{ ansible_hostname }}\""
-
 
 ##############
 # CEPH OPTIONS
@@ -60,98 +15,10 @@ fetch_directory: ~/ceph-ansible-keys
 
 # ACTIVATE THE FSID VARIABLE FOR NON-VAGRANT DEPLOYMENT
 fsid: "{{ cluster_uuid.stdout }}"
-
-# Devices to be used as OSDs
-# You can pre-provision disks that are not present yet.
-# Ansible will just skip them. Newly added disk will be
-# automatically configured during the next run.
-#
-
-
-# Declare devices to be used as OSDs
-# All scenario(except 3rd) inherit from the following device declaration
-
-#devices:
-#  - /dev/sdb
-#  - /dev/sdc
-#  - /dev/sdd
-#  - /dev/sde
-
 devices: [ "/dev/sdc" ]
-
-
-#'osd_auto_discovery'  mode prevents you from filling out the 'devices' variable above.
-#  You can use this option with First and Forth and Fifth OSDS scenario.
-# Device discovery is based on the Ansible fact 'ansible_devices'
-# which reports all the devices on a system. If chosen all the disks
-# found will be passed to ceph-disk. You should not be worried on using
-# this option since ceph-disk has a built-in check which looks for empty devices.
-# Thus devices with existing partition tables will not be used.
-#
 #osd_auto_discovery: false
-
-
-# !! WARNING !!
-# #
-# # /!\ ENABLE ONLY ONE SCENARIO AT A TIME /!\
-# #
-# #  !! WARNING !!
-#
-
-# I. First scenario: journal and osd_data on the same device
-# Use 'true' to enable this scenario
-# This will collocate both journal and data on the same disk
-# creating a partition at the beginning of the device
-# List devices under 'devices' variable above or choose 'osd_auto_discovery'
-
-
-journal_collocation: true
-
-
-# II.  Second scenario:  N journal devices for N OSDs
-# Use 'true' for 'raw_multi_journal' to enable this scenario
-# List devices under 'devices' variable above and
-# write journal devices for those under 'raw_journal_devices'
-# In the following example:
-# * sdb and sdc will get sdf as a journal
-# * sdd and sde will get sdg as a journal
-
-# While starting you have 2 options:
-# 1. Pre-allocate all the devices
-# 2. Progressively add new devices
-#raw_multi_journal: false
-#raw_journal_devices:
-#  - /dev/sdf
-#  - /dev/sdf
-#  - /dev/sdg
-#  - /dev/sdg
-#
-# NOTE(leseb):
-# On a containerized scenario we only support A SINGLE journal
-# for all the OSDs on a given machine. If you don't, bad things will happen
-# This is a limitation we plan to fix at some point.
-#raw_journal_devices: []
-
-
-# IV. This will partition disks for BlueStore
-# Use 'true' to enable this scenario
+osd_scenario: collocated
 #bluestore: true
-
-
-# V. Encrypt osd data and/or journal devices with dm-crypt.
-# Keys are stored into the monitors k/v store
-# Use 'true' to enable this scenario
-# Both journal and data are stored on the same dm-crypt encrypted device
-#dmcrypt_journal_collocation: false
-
-
-# VI. Encrypt osd data and/or journal devices with dm-crypt.
-# Keys are stored into the monitors k/v store
-# Use 'true' to enable this scenario
-# Journal and osd data are separated, each with their own dm-crypt device
-# You must use raw_journal_devices and set your journal devices
-#dmcrypt_dedicated_journal: false
-
 
 ##########
 # DOCKER #
