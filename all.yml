@@ -382,7 +382,7 @@ mds_max_mds: 3
 # DOCKER #
 ##########
 
-docker: true
+docker: false
 ceph_docker_image: "ceph/daemon"
 ceph_docker_image_tag: latest
 
