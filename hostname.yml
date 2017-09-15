@@ -1,5 +1,11 @@
 - hosts: mons, osds, mgrs, clients, mdss
   tasks:
+  - shell: "host {{ ansible_default_ipv4.address }} | cut -f5 -d' ' |cut -f1-4 -d."
+    register: target_hostname
+
+  - debug:
+      msg: "got {{ target_hostname.stdout }}"
+
   - hostname:
-      name: "{{ ansible_default_ipv4.address }}"
-    when: ansible_hostname == "localhost"
+      name: "{{ target_hostname.stdout }}"
+    #when: ansible_hostname == "localhost"
