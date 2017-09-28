@@ -1,0 +1,35 @@
+- hosts: osds
+  tasks:
+  - shell: "parted -s /dev/sdc mklabel gpt"
+
+  - parted:
+     device: /dev/sdc
+     number: 1
+     state: present
+     part_start: 0%
+     part_end: 25%
+     align: optimal
+
+  - parted:
+     device: /dev/sdc
+     number: 2
+     state: present
+     part_start: 25%
+     part_end: 50%
+     align: optimal
+
+  - parted:
+     device: /dev/sdc
+     number: 3
+     state: present
+     part_start: 50%
+     part_end: 75%
+     align: optimal
+
+  - parted:
+     device: /dev/sdc
+     number: 4
+     state: present
+     part_start: 75%
+     part_end: 100%
+     align: optimal

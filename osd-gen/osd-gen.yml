@@ -1,0 +1,11 @@
+- hosts:
+  - osds
+
+  tasks:
+  - name: distribute files
+    copy:
+      src: /root/osd-gen/1G-corpus.tgz
+      dest: /root/1G-corpus.tgz
+
+  - name: run OSD generation script
+    script: /root/osd-gen/osd-gen.sh
