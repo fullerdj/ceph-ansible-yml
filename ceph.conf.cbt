@@ -1,0 +1,70 @@
+[global]
+        mon.a = {'mon_addr': '192.168.177.54', 'host': 'li1023-88'}
+        mon.c = {'mon_addr': '192.168.178.32', 'host': 'li235-129'}
+        cluster network = 192.168.128.0/17
+        enable experimental unrecoverable data corrupting features = rocksdb
+        mon.b = {'mon_addr': '192.168.134.176', 'host': 'li1031-41'}
+        mon = {'mon_data': '/tmp/cbt/ceph/mon.$id'}
+        public network = 192.168.128.0/17
+        filestore omap backend = rocksdb
+
+[osd.0]
+        host = li1742-241
+        osd data = /tmp/cbt/mnt/osd-device-0-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-0-journal
+
+[osd.1]
+        host = li1742-241
+        osd data = /tmp/cbt/mnt/osd-device-1-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-1-journal
+
+[osd.10]
+        host = li131-217
+        osd data = /tmp/cbt/mnt/osd-device-2-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-2-journal
+
+[osd.11]
+        host = li131-217
+        osd data = /tmp/cbt/mnt/osd-device-3-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-3-journal
+
+[osd.2]
+        host = li1742-241
+        osd data = /tmp/cbt/mnt/osd-device-2-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-2-journal
+
+[osd.3]
+        host = li1742-241
+        osd data = /tmp/cbt/mnt/osd-device-3-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-3-journal
+
+[osd.4]
+        host = li1750-13
+        osd data = /tmp/cbt/mnt/osd-device-0-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-0-journal
+
+[osd.5]
+        host = li1750-13
+        osd data = /tmp/cbt/mnt/osd-device-1-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-1-journal
+
+[osd.6]
+        host = li1750-13
+        osd data = /tmp/cbt/mnt/osd-device-2-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-2-journal
+
+[osd.7]
+        host = li1750-13
+        osd data = /tmp/cbt/mnt/osd-device-3-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-3-journal
+
+[osd.8]
+        host = li131-217
+        osd data = /tmp/cbt/mnt/osd-device-0-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-0-journal
+
+[osd.9]
+        host = li131-217
+        osd data = /tmp/cbt/mnt/osd-device-1-data
+        osd jounral = /dev/disk/by-partlabel/osd-device-1-journal
+
