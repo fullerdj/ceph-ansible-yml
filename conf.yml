@@ -1,0 +1,21 @@
+settings:
+  osd_servers: ['li1742-241', 'li1750-13', 'li131-217']
+  osds_per_server: 4
+
+default:
+  global:
+    enable_experimental_unrecoverable_data_corrupting_features: rocksdb
+    filestore_omap_backend: rocksdb
+    public network: 192.168.128.0/17
+    cluster network: 192.168.128.0/17
+    mon:
+      mon_data: "/tmp/cbt/ceph/mon.$id"
+    mon.a:
+      host: li1023-88
+      mon_addr: 192.168.177.54
+    mon.b:
+      host: li1031-41
+      mon_addr: 192.168.134.176
+    mon.c:
+      host: li235-129
+      mon_addr: 192.168.178.32

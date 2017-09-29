@@ -1,0 +1,29 @@
+cluster:
+  user: 'root'
+  head: 'li284-245'
+  clients: ['li129.154']
+  osds: ['li1742-241', 'li1750-13', 'li131-217']
+  mons:
+    li1023-88:
+      a: '192.168.177.54'
+    li1031-41:
+      b: '192.168.134.176'
+    li235-129:
+      c: '192.168.178.32'
+  osds_per_node: 4
+  fs: 'xfs'
+  mkfs_opts: '-f -i size=2048'
+  mount_ops: '-o inode64,noatime,logbsize=256k'
+  conf_file: '/root/ceph.conf'
+  iterations: 1
+  use_existing: False
+  clusterid: 'ceph'
+  tmp_dir: '/tmp/cbt'
+  pool_profiles:
+    test:
+      pg_size: 256
+      pgp_size: 256
+      replication: 1
+benchmarks:
+  nullbench:
+    none:
