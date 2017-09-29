@@ -3,9 +3,12 @@
         enable experimental unrecoverable data corrupting features = rocksdb
         public network = 192.168.128.0/17
         filestore omap backend = rocksdb
-		  mon initial members = li1023-88, li1031-41, li235-129
-		  mon host = 192.168.177.54, 192.168.134.176, 192.168.178.32
-		  keyring = /tmp/cbt/ceph/keyring
+        mon host = 192.168.177.54, 192.168.134.176, 192.168.178.32
+        keyring = /tmp/cbt/ceph/keyring
+        auth cluster required = none
+        auth service required = none
+        auth client required = none
+
 
 [mon]
         mon data = /tmp/cbt/ceph/mon.$id
@@ -13,60 +16,60 @@
 [osd.0]
         host = li1742-241
         osd data = /tmp/cbt/mnt/osd-device-0-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-0-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-0-journal
 
 [osd.1]
         host = li1742-241
         osd data = /tmp/cbt/mnt/osd-device-1-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-1-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-1-journal
 
 [osd.10]
         host = li131-217
         osd data = /tmp/cbt/mnt/osd-device-2-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-2-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-2-journal
 
 [osd.11]
         host = li131-217
         osd data = /tmp/cbt/mnt/osd-device-3-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-3-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-3-journal
 
 [osd.2]
         host = li1742-241
         osd data = /tmp/cbt/mnt/osd-device-2-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-2-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-2-journal
 
 [osd.3]
         host = li1742-241
         osd data = /tmp/cbt/mnt/osd-device-3-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-3-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-3-journal
 
 [osd.4]
         host = li1750-13
         osd data = /tmp/cbt/mnt/osd-device-0-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-0-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-0-journal
 
 [osd.5]
         host = li1750-13
         osd data = /tmp/cbt/mnt/osd-device-1-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-1-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-1-journal
 
 [osd.6]
         host = li1750-13
         osd data = /tmp/cbt/mnt/osd-device-2-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-2-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-2-journal
 
 [osd.7]
         host = li1750-13
         osd data = /tmp/cbt/mnt/osd-device-3-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-3-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-3-journal
 
 [osd.8]
         host = li131-217
         osd data = /tmp/cbt/mnt/osd-device-0-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-0-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-0-journal
 
 [osd.9]
         host = li131-217
         osd data = /tmp/cbt/mnt/osd-device-1-data
-        osd jounral = /dev/disk/by-partlabel/osd-device-1-journal
+        osd journal = /dev/disk/by-partlabel/osd-device-1-journal
 

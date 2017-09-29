@@ -1,7 +1,7 @@
 cluster:
   user: 'root'
-  head: 'li284-245'
-  clients: ['li129.154']
+  head: 'li129-154'
+  clients: ['li129-154']
   osds: ['li1742-241', 'li1750-13', 'li131-217']
   mons:
     li1023-88:
