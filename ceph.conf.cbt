@@ -1,12 +1,14 @@
 [global]
-        mon.a = {'mon_addr': '192.168.177.54', 'host': 'li1023-88'}
-        mon.c = {'mon_addr': '192.168.178.32', 'host': 'li235-129'}
         cluster network = 192.168.128.0/17
         enable experimental unrecoverable data corrupting features = rocksdb
-        mon.b = {'mon_addr': '192.168.134.176', 'host': 'li1031-41'}
-        mon = {'mon_data': '/tmp/cbt/ceph/mon.$id'}
         public network = 192.168.128.0/17
         filestore omap backend = rocksdb
+		  mon initial members = li1023-88, li1031-41, li235-129
+		  mon host = 192.168.177.54, 192.168.134.176, 192.168.178.32
+		  keyring = /tmp/cbt/ceph/keyring
+
+[mon]
+        mon data = /tmp/cbt/ceph/mon.$id
 
 [osd.0]
         host = li1742-241
